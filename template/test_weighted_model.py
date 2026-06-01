@@ -9,6 +9,7 @@ from weighted_model import (
     decode_histogram,
     expected_histogram,
     load_config,
+    prepares_superposition,
 )
 
 
@@ -42,6 +43,9 @@ class WeightedModelTests(unittest.TestCase):
 
     def test_state_order_is_stable(self):
         self.assertEqual(STATE_ORDER, ("0", "4", "2", "1", "3"))
+
+    def test_example_prepares_superposition(self):
+        self.assertTrue(prepares_superposition(self.config["actions"]))
 
 
 if __name__ == "__main__":

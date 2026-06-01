@@ -18,6 +18,16 @@ python3 weighted_model.py --seed 7
 Without `--histogram`, the script uses the ideal weighted distribution. This
 lets you test the controller before submitting a quantum job.
 
+On macOS, you can explicitly request a Terminal window after the generated
+circuit is confirmed to prepare a superposition:
+
+```bash
+python3 weighted_model.py --seed 7 --open-terminal-on-superposition
+```
+
+This checks the circuit construction before execution. Measuring a live
+quantum state to verify superposition would disturb that state.
+
 ## Run On Azure Quantum
 
 Generate `generated_circuit.json`, then submit it to an IonQ simulator:

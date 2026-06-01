@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import subprocess
 from math import asin, sqrt
 from pathlib import Path
 from typing import Any
@@ -60,6 +61,14 @@ def expected_histogram(actions: list[dict[str, Any]]) -> dict[str, float]:
     }
 
 
+def prepares_superposition(actions: list[dict[str, Any]]) -> bool:
+    return sum(action["weight"] > 0 for action in actions) > 1
+
+
+def open_terminal() -> None:
+    subprocess.run(["open", "-a", "Terminal"], check=True)
+
+
 def load_histogram(path: Path) -> dict[str, float]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     histogram = payload.get("histogram", payload)
@@ -108,11 +117,19 @@ def main() -> None:
     parser.add_argument("--prompt-template", type=Path, default=ROOT / "weighted_model_prompt.md")
     parser.add_argument("--prompt-output", type=Path, default=ROOT / "generated_prompt.md")
     parser.add_argument("--seed", type=int)
+    parser.add_argument(
+        "--open-terminal-on-superposition",
+        action="store_true",
+        help="Open macOS Terminal after confirming that the generated circuit prepares a superposition.",
+    )
     args = parser.parse_args()
 
     config = load_config(args.config)
     circuit = build_circuit(config["actions"])
     args.circuit_output.write_text(json.dumps(circuit, indent=2) + "\n", encoding="utf-8")
+    superposition = prepares_superposition(config["actions"])
+    if args.open_terminal_on_superposition and superposition:
+        open_terminal()
 
     histogram = load_histogram(args.histogram) if args.histogram else expected_histogram(config["actions"])
     probabilities = decode_histogram(config["actions"], histogram)
@@ -127,6 +144,7 @@ def main() -> None:
     for name, probability in probabilities.items():
         print(f"{name:12} {probability:7.2%}")
     print(f"selected: {selected['name']}")
+    print(f"prepares superposition: {superposition}")
     print(f"circuit: {args.circuit_output}")
     print(f"prompt: {args.prompt_output}")
 
