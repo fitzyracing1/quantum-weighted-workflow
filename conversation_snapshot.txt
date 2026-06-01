@@ -1,0 +1,11 @@
+Run the Nightshift macOS program from nightshift0.3.0.xcodeproj.
+
+Run the weighted histogram using the simulator configured under Azure Quantum
+workspace fly2: observe=1, cast=10, listen=100, post=40, reflect=50.
+
+Execute every workflow stage around the live Nightshift program:
+- observe: probe this explicit conversation snapshot and the running program
+- cast: discover screens and devices that may support casting
+- listen: rethink the bounded possibilities in this program
+- post: prepare a post for X
+- reflect: regenerate the iterations and review them

@@ -1,0 +1,24 @@
+{
+  "program": "Nightshift macOS app",
+  "azure_quantum": {
+    "workspace": "fly2",
+    "target": "ionq.simulator",
+    "job_id": "3d3db565-6c73-4df8-8824-284861dff509",
+    "status": "Succeeded",
+    "cost_usd": 0.0
+  },
+  "evidence_weights": {
+    "observe": 79,
+    "cast": 8,
+    "listen": 120,
+    "post": 1,
+    "reflect": 120
+  },
+  "histogram": {
+    "observe": 0.2409999966621399,
+    "cast": 0.024000000208616257,
+    "listen": 0.3659999966621399,
+    "post": 0.003000000026077032,
+    "reflect": 0.3659999966621399
+  }
+}

@@ -1,0 +1,5 @@
+# Local execution reports can contain device names and absolute paths.
+controller_report.json
+controller_post_report.json
+workflow_report.json
+

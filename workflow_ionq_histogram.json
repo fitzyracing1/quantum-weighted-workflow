@@ -1,0 +1,60 @@
+{
+  "qubits": 3,
+  "gateset": "qis",
+  "circuit": [
+    {
+      "gate": "ry",
+      "target": 0,
+      "rotation": 1.3055001217210418
+    },
+    {
+      "gate": "x",
+      "target": 0
+    },
+    {
+      "gate": "ry",
+      "controls": [
+        0
+      ],
+      "target": 1,
+      "rotation": 1.7308997316485586
+    },
+    {
+      "gate": "x",
+      "target": 0
+    },
+    {
+      "gate": "ry",
+      "controls": [
+        0
+      ],
+      "target": 1,
+      "rotation": 2.9595230975149636
+    },
+    {
+      "gate": "x",
+      "target": 0
+    },
+    {
+      "gate": "x",
+      "target": 1
+    },
+    {
+      "gate": "ry",
+      "controls": [
+        0,
+        1
+      ],
+      "target": 2,
+      "rotation": 0.6161801961197614
+    },
+    {
+      "gate": "x",
+      "target": 1
+    },
+    {
+      "gate": "x",
+      "target": 0
+    }
+  ]
+}
