@@ -18,6 +18,11 @@ python3 weighted_model.py --seed 7
 
 The included Nightshift files are a concrete example of the same pattern.
 
+The [privacy-router example](examples/privacy_router/README.md) shows how the
+same circuit construction can recommend approved VPN or routing profiles
+without changing the network. Quantum weighting is a policy input, not a
+replacement for post-quantum cryptography.
+
 ## Architecture
 
 ```text

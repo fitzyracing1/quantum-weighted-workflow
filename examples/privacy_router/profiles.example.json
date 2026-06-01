@@ -1,0 +1,57 @@
+{
+  "model_name": "quantum-aware-privacy-router",
+  "actions": [
+    {
+      "name": "balanced",
+      "weight": 35,
+      "instruction": "Recommend the approved balanced tunnel profile."
+    },
+    {
+      "name": "low-latency",
+      "weight": 20,
+      "instruction": "Recommend the approved low-latency tunnel profile."
+    },
+    {
+      "name": "high-privacy",
+      "weight": 25,
+      "instruction": "Recommend the approved high-privacy tunnel profile."
+    },
+    {
+      "name": "rotate-endpoint",
+      "weight": 15,
+      "instruction": "Recommend rotating to the next approved endpoint."
+    },
+    {
+      "name": "pause-and-review",
+      "weight": 5,
+      "instruction": "Recommend pausing automation and requesting human review."
+    }
+  ],
+  "approved_profiles": {
+    "balanced": {
+      "endpoint_alias": "region-a",
+      "purpose": "Default privacy and performance policy."
+    },
+    "low-latency": {
+      "endpoint_alias": "region-b",
+      "purpose": "Lower-latency policy for approved interactive traffic."
+    },
+    "high-privacy": {
+      "endpoint_alias": "region-c",
+      "purpose": "Higher-privacy policy using an approved endpoint."
+    },
+    "rotate-endpoint": {
+      "endpoint_alias": "next-approved-endpoint",
+      "purpose": "Rotate within a separately maintained approved endpoint list."
+    },
+    "pause-and-review": {
+      "endpoint_alias": null,
+      "purpose": "Do not connect. Ask for human review."
+    }
+  },
+  "cryptography_requirements": {
+    "key_establishment": "Use a vetted VPN implementation that supports NIST FIPS 203 ML-KEM or a reviewed hybrid key-establishment mode.",
+    "authentication": "Use a vetted authentication design and migrate signatures according to vendor guidance, including NIST FIPS 204 ML-DSA where appropriate.",
+    "data_plane": "Use the VPN implementation's reviewed authenticated-encryption data plane. Do not invent a cipher."
+  }
+}

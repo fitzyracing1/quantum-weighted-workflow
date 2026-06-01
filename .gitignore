@@ -10,3 +10,7 @@ template/generated_prompt.md
 # Python bytecode is local build output.
 __pycache__/
 *.pyc
+
+# Privacy-router example outputs are local recommendations.
+examples/privacy_router/generated_privacy_router_circuit.json
+examples/privacy_router/privacy_router_report.json
