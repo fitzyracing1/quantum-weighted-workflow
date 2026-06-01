@@ -13,6 +13,7 @@ class PrivacyRouterTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "report.json"
             circuit = Path(directory) / "circuit.json"
+            vpn_config = Path(directory) / "selected.conf"
             subprocess.run(
                 [
                     "python3",
@@ -23,6 +24,8 @@ class PrivacyRouterTests(unittest.TestCase):
                     str(output),
                     "--circuit-output",
                     str(circuit),
+                    "--vpn-config-output",
+                    str(vpn_config),
                 ],
                 check=True,
                 capture_output=True,
@@ -30,10 +33,16 @@ class PrivacyRouterTests(unittest.TestCase):
             )
             report = json.loads(output.read_text(encoding="utf-8"))
             config = json.loads((ROOT / "profiles.example.json").read_text(encoding="utf-8"))
-            self.assertEqual(report["mode"], "dry-run-recommendation-only")
+            self.assertEqual(report["mode"], "dry-run-vpn-plan-only")
             self.assertIn(report["selected_policy"], config["approved_profiles"])
             self.assertEqual(len(report["guardrails"]), 4)
             self.assertTrue(circuit.exists())
+            self.assertTrue(vpn_config.exists())
+            rendered = vpn_config.read_text(encoding="utf-8")
+            self.assertIn("[Interface]", rendered)
+            self.assertIn("[Peer]", rendered)
+            self.assertIn("REPLACE_WITH_CLIENT_PRIVATE_KEY", rendered)
+            self.assertEqual(report["activation_plan"]["mode"], "manual-activation-required")
 
 
 if __name__ == "__main__":

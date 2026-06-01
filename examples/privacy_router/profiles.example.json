@@ -30,23 +30,76 @@
   "approved_profiles": {
     "balanced": {
       "endpoint_alias": "region-a",
-      "purpose": "Default privacy and performance policy."
+      "purpose": "Default privacy and performance policy.",
+      "wireguard": {
+        "interface": {
+          "address": "10.44.0.2/32",
+          "private_key_ref": "REPLACE_WITH_CLIENT_PRIVATE_KEY",
+          "dns": ["1.1.1.1", "9.9.9.9"]
+        },
+        "peer": {
+          "public_key": "REPLACE_WITH_REGION_A_PUBLIC_KEY",
+          "endpoint": "vpn-region-a.example.invalid:51820",
+          "allowed_ips": ["0.0.0.0/0", "::/0"],
+          "persistent_keepalive": 25
+        }
+      }
     },
     "low-latency": {
       "endpoint_alias": "region-b",
-      "purpose": "Lower-latency policy for approved interactive traffic."
+      "purpose": "Lower-latency policy for approved interactive traffic.",
+      "wireguard": {
+        "interface": {
+          "address": "10.44.1.2/32",
+          "private_key_ref": "REPLACE_WITH_CLIENT_PRIVATE_KEY",
+          "dns": ["1.1.1.1"]
+        },
+        "peer": {
+          "public_key": "REPLACE_WITH_REGION_B_PUBLIC_KEY",
+          "endpoint": "vpn-region-b.example.invalid:51820",
+          "allowed_ips": ["0.0.0.0/0", "::/0"],
+          "persistent_keepalive": 25
+        }
+      }
     },
     "high-privacy": {
       "endpoint_alias": "region-c",
-      "purpose": "Higher-privacy policy using an approved endpoint."
+      "purpose": "Higher-privacy policy using an approved endpoint.",
+      "wireguard": {
+        "interface": {
+          "address": "10.44.2.2/32",
+          "private_key_ref": "REPLACE_WITH_CLIENT_PRIVATE_KEY",
+          "dns": ["9.9.9.9"]
+        },
+        "peer": {
+          "public_key": "REPLACE_WITH_REGION_C_PUBLIC_KEY",
+          "endpoint": "vpn-region-c.example.invalid:51820",
+          "allowed_ips": ["0.0.0.0/0", "::/0"],
+          "persistent_keepalive": 25
+        }
+      }
     },
     "rotate-endpoint": {
       "endpoint_alias": "next-approved-endpoint",
-      "purpose": "Rotate within a separately maintained approved endpoint list."
+      "purpose": "Rotate within a separately maintained approved endpoint list.",
+      "wireguard": {
+        "interface": {
+          "address": "10.44.3.2/32",
+          "private_key_ref": "REPLACE_WITH_CLIENT_PRIVATE_KEY",
+          "dns": ["1.1.1.1", "9.9.9.9"]
+        },
+        "peer": {
+          "public_key": "REPLACE_WITH_NEXT_APPROVED_PUBLIC_KEY",
+          "endpoint": "vpn-next-approved.example.invalid:51820",
+          "allowed_ips": ["0.0.0.0/0", "::/0"],
+          "persistent_keepalive": 25
+        }
+      }
     },
     "pause-and-review": {
       "endpoint_alias": null,
-      "purpose": "Do not connect. Ask for human review."
+      "purpose": "Do not connect. Ask for human review.",
+      "wireguard": null
     }
   },
   "cryptography_requirements": {

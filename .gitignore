@@ -13,4 +13,5 @@ __pycache__/
 
 # Privacy-router example outputs are local recommendations.
 examples/privacy_router/generated_privacy_router_circuit.json
+examples/privacy_router/generated_selected_wireguard.conf
 examples/privacy_router/privacy_router_report.json
