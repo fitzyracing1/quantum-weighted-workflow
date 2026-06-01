@@ -1,0 +1,30 @@
+{
+  "model_name": "weighted-workflow-example",
+  "actions": [
+    {
+      "name": "observe",
+      "weight": 20,
+      "instruction": "Collect approved input data and summarize what changed."
+    },
+    {
+      "name": "explore",
+      "weight": 30,
+      "instruction": "Generate bounded alternatives and identify tradeoffs."
+    },
+    {
+      "name": "build",
+      "weight": 40,
+      "instruction": "Produce the smallest useful artifact for review."
+    },
+    {
+      "name": "review",
+      "weight": 25,
+      "instruction": "Check the artifact for errors, risks, and missing evidence."
+    },
+    {
+      "name": "report",
+      "weight": 10,
+      "instruction": "Prepare a concise draft report. Do not publish automatically."
+    }
+  ]
+}

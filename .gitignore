@@ -3,3 +3,10 @@ controller_report.json
 controller_post_report.json
 workflow_report.json
 
+# Template outputs are generated for each run.
+template/generated_circuit.json
+template/generated_prompt.md
+
+# Python bytecode is local build output.
+__pycache__/
+*.pyc

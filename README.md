@@ -1,8 +1,34 @@
-# Quantum Weighted Workflow Prototype
+# Quantum Weighted Workflow Template
 
-This prototype encodes workflow evidence into a three-qubit IonQ circuit and
-uses the returned histogram as a probabilistic control signal for a bounded
-Python controller.
+This repository contains a reusable template and a working prototype for
+encoding workflow evidence into a three-qubit IonQ circuit. The returned
+histogram becomes a probabilistic control signal for a bounded Python or AI
+controller.
+
+## Start Here
+
+Use the generic [template](template/README.md) to define five weighted actions,
+generate an IonQ circuit, decode its histogram, sample one action, and render a
+guardrailed AI prompt.
+
+```bash
+cd template
+python3 weighted_model.py --seed 7
+```
+
+The included Nightshift files are a concrete example of the same pattern.
+
+## Architecture
+
+```text
+approved evidence
+-> weighted five-action configuration
+-> generated three-qubit IonQ circuit
+-> simulator or quantum processor histogram
+-> Python decoder and bounded action sampler
+-> AI prompt or permissioned action handler
+-> measured result for the next cycle
+```
 
 ## Published Result
 
@@ -29,4 +55,3 @@ Azure Quantum job: `3d3db565-6c73-4df8-8824-284861dff509`
 
 Raw local reports are ignored because they can contain device names and
 absolute paths.
-
